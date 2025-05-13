@@ -1,0 +1,11 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: C:\William\BCB PROJECT\DockerFile
+    ports:
+      - "3000:80"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=production
