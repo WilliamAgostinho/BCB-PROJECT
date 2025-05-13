@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ConversationsPage from './ConversationsPage';
 import ChatPage from './ChatPage';
+import { useUser } from '../contexts/UserContext';
 
 const MainChatPage = () => {
   const [selectedConversationId, setSelectedConversationId] = useState<string | null>(null);
   const [urgentConversations, setUrgentConversations] = useState<{ [id: string]: boolean }>({});
   const navigate = useNavigate();
   const { conversationId } = useParams();
+  const { user } = useUser();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
 
   const handleUrgencyChange = (isUrgent: boolean) => {
     if (!selectedConversationId) return;
@@ -17,12 +25,10 @@ const MainChatPage = () => {
     }));
   };
 
-  const handleConversationSelect = (id: string | null) => {  // Agora aceita 'string | null'
+  const handleConversationSelect = (id: string | null) => {
     setSelectedConversationId(id);
     if (id) {
-      navigate(`/chat/${id}`);  // Apenas navega se um ID de conversa válido for selecionado
-    } else {
-      // Caso necessário, defina o que ocorre se o ID for nulo
+      navigate(`/chat/${id}`);
     }
   };
 
@@ -30,7 +36,7 @@ const MainChatPage = () => {
     <div style={{ display: 'flex', height: '100vh', fontFamily: 'Arial, sans-serif', background: '#0b141a' }}>
       <div style={{ width: '30%', borderRight: '1px solid #0b141a', overflowY: 'auto' }}>
         <ConversationsPage
-          onSelectConversation={handleConversationSelect}  // Passa a função atualizada
+          onSelectConversation={handleConversationSelect}
           urgentConversations={urgentConversations}
         />
       </div>
@@ -51,6 +57,5 @@ const MainChatPage = () => {
     </div>
   );
 };
-
 
 export default MainChatPage;

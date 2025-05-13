@@ -1,12 +1,71 @@
-# React + Vite
+# 💬 Big Chat Brasil – Desafio Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o projeto Big chat Brasil. A aplicação simula uma **interface de chat interativa** entre empresas e clientes, com suporte a mensagens, saldo, histórico de consumo e diferenciação de urgência.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades Implementadas
 
-## Expanding the ESLint configuration
+### ✅ Funcionalidades essenciais:
+- Tela de login com CPF/CNPJ (com máscara e validação)
+- Lista de conversas recentes
+- Interface de chat com estilo "WhatsApp Web"
+- Envio de mensagens com bolhas visuais
+- Exibição de saldo do cliente
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### ✅ Aprimoramentos:
+- Urgência nas mensagens (🟥)
+- Feedback visual de status (✓, ✓✓, ❌)
+- Simulação de "digitando..."
+- Histórico de consumo com desconto no saldo
+- Busca de conversas por nome
+- Design responsivo e modo escuro
+
+---
+
+🧪 Tecnologias Utilizadas
+
+React com TypeScript
+
+React Router DOM para navegação
+
+Context API para gerenciamento global de usuário
+
+Estilização inline com tema escuro (modo dark)
+
+Mock de dados via arrays locais (contacts, conversations, messages)
+
+---
+
+📌 Considerações
+Este projeto utiliza dados mockados para simulação de API.
+
+O foco foi na entrega de funcionalidades funcionais, bem estruturadas e visualmente claras.
+
+O design é escuro, responsivo e inspirado no WhatsApp Web.
+
+---
+
+## 🐳 Rodando com Docker
+
+### 📋 Pré-requisitos:
+- [Docker](https://www.docker.com/) instalado
+
+### ▶️ Executando:
+
+```bash
+# 1. Clone o projeto
+git clone https://github.com/WilliamAgostinho/BCB-PROJECT.git
+cd bcb-chat-frontend
+
+# 2. Build da imagem
+docker build -t bcb-chat-frontend .
+
+# 3. Execução do container
+docker run -p 3000:3000 bcb-chat-frontend
+
+---
+Feito Por: 
+
+William Souza
+Desenvolvedor Frontend

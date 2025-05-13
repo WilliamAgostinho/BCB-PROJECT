@@ -76,8 +76,8 @@ const ConversationsPage: React.FC<Props> = ({ onSelectConversation, urgentConver
           <li
             key={convo.id}
             onClick={() => {
-              onSelectConversation(convo.id); // Passa o ID da conversa
-              navigate(`/chat/${convo.id}`); // Navega para o ChatPage
+              onSelectConversation(convo.id); 
+              navigate(`/chat/${convo.id}`); 
             }}
             style={{
               cursor: 'pointer',
