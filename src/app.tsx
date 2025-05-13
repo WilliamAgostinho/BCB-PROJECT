@@ -1,34 +1,27 @@
-import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import MainChatPage from './pages/MainChatPage';
+import { useUser } from './contexts/UserContext';
 
-const App = () => {
-  // Verifica se o usuário está logado a partir do localStorage
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(localStorage.getItem('isLoggedIn') === 'true');
-
-  const handleLogin = () => {
-    localStorage.setItem('isLoggedIn', 'true'); // Salva no localStorage
-    setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn'); // Remove o estado do localStorage ao deslogar
-    setIsLoggedIn(false);
-  };
+function App() {
+  const { user } = useUser();
 
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route
           path="/conversations"
-          element={isLoggedIn ? <MainChatPage /> : <Navigate to="/login" />}
+          element={user ? <MainChatPage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/chat/:conversationId"
+          element={user ? <MainChatPage /> : <Navigate to="/login" />}
         />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
   );
-};
+}
 
 export default App;
