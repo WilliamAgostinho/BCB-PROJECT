@@ -2,7 +2,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: C:\William\BCB PROJECT\DockerFile
+      dockerfile: Dockerfile
     ports:
       - "3000:80"
     volumes:
