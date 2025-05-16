@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './app';  // Certifique-se de que o caminho do App está correto
+import App from './app'; 
 import { UserProvider } from './contexts/UserContext';
 
 const rootElement = document.getElementById('root');
